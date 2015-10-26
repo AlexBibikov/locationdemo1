@@ -1,0 +1,102 @@
+﻿doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    meta(name="description", content="Demo Application")
+    meta(name="author", content="Alex Bibikov")
+
+    link(href="/img/favicon.ico", rel="shortcut icon")
+
+    title= title
+
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/leaflet/leaflet.css')
+    link(rel='stylesheet', href='/css/style.css')
+  body
+    nav.navbar.navbar-inverse.navbar-fixed-top(role="navigation")
+        .container
+            .navbar-header
+                button.navbar-toggle(type="button",data-toggle="collapse",data-target="#bs-example-navbar-collapse-1")
+                    span.sr-only Toggle navigation
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+                a.navbar-brand(href="#")
+                    img#logo(src="/img/icon-911.png")
+                    span#logo Service
+            #bs-example-navbar-collapse-1.collapse.navbar-collapse
+                ul.nav.navbar-nav
+                    li
+                        .form-inline(style="margin: 8px 0 0 16px;")
+                            .form-group
+                                label(for="phone-no") Phone #
+                                input#phone-no.form-control(type="text", placeholder="phone #")
+                            button#get-location-btn.btn.btn-primary Get Location
+                    li
+                        .dropdown(style="padding-top: 8px;")
+                          button#dropdownMenuDelete.btn.btn-primary.dropdown-toggle(type="button", data-toggle="dropdown", aria-haspopup="true", aria-expanded="true") Find
+                            span.caret
+                          ul.dropdown-menu(aria-labelledby="dropdownMenuDelete")
+                            li
+                                a(href="#") My Location
+                            li
+                                a(href="#") 2145970489
+                    li
+                        .dropdown(style="padding-top: 8px;")
+                          button#dropdownMenuDelete.btn.btn-primary.dropdown-toggle(type="button", data-toggle="dropdown", aria-haspopup="true", aria-expanded="true") Delete
+                            span.caret
+                          ul.dropdown-menu(aria-labelledby="dropdownMenuDelete")
+                            li
+                                a(href="#") My location
+                            li
+                                a(href="#") 2145970489
+                    li
+                        a(name="contact", href="#", data-toggle="modal", data-target="#modal-contact") Contact
+                    li
+                        a(name="about", href="#", data-toggle="modal", data-target="#modal-about") About
+    block content
+    footer
+        .row
+            .col-lg-12
+                p Copyright &copy; Ltd 2015
+
+
+    #modal-about.modal.fade(tabindex="-1", role="dialog", aria-labelledby="myModalLabel")
+        .modal-dialog(role="document")
+            .modal-content
+                .modal-header
+                    button.close(type="button", data-dismiss="modal", aria-label="Close")
+                        span(aria-hidden="true") &times;
+                    h4#myModalLabel.modal-title 911 Location Service Demo
+                .modal-body
+                    img(src="/img/icon-911.png", alt="911 Location Service, Inc")
+                    br
+                    br
+                    br
+                    p phone: +1.214.597.0489 
+                .modal-footer
+                    button.btn.btn-default(type="button", data-dismiss="modal") Close
+
+    #modal-contact.modal.fade(tabindex="-1", role="dialog", aria-labelledby="myModalLabel")
+        .modal-dialog(role="document")
+            .modal-content
+                .modal-header
+                    button.close(type="button", data-dismiss="modal", aria-label="Close")
+                        span(aria-hidden="true") &times;
+                    h4#myModalLabel.modal-title 911 Location Service
+                .modal-body
+                    img(src="/img/icon-911.png", alt="911 Location Service, Inc")
+                    br
+                    br
+                    br
+                    p phone: +1.214.597.0489 
+                .modal-footer
+                    button.btn.btn-default(type="button", data-dismiss="modal") Close
+
+
+    script(src="/js/jquery.js")
+    script(src="/js/bootstrap.min.js")
+    script(src="/leaflet/leaflet.js")
+    script(src="/js/main.js")

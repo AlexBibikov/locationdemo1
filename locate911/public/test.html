@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript">
+      var ID = 2;
+      var source = new EventSource('/stream');
+
+      source.addEventListener('message', function(e) {
+          console.log(e.data);
+          if (e.data == ID)
+              postLocation();
+      }, false);
+
+      source.addEventListener('open', function (e) {
+          console.log("OPENED");
+      }, false);
+
+      source.addEventListener('error', function (e) {
+          if (e.readyState == EventSource.CLOSED) {
+              console.log("CLOSED");
+          }
+      }, false);
+
+      function postLocation() {
+          navigator.geolocation.getCurrentPosition(function (p) {
+              p.coords.id = ID;
+              $.post("/location/"+ID, p.coords );
+          }, function (err) {
+              console.log("getCurrentPosition error: ", err.message);
+          }, {
+              enableHighAccuracy: true,
+              timeout: 5000,
+              maximumAge: 0
+          });
+      }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
